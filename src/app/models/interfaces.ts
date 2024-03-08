@@ -8,6 +8,7 @@ export interface Livro {
   thumbnail?: string;
 }
 
+//Dados vindo da API
 export interface VolumeInfo {
   title: string;
   authors: string[];
@@ -27,6 +28,7 @@ export interface VolumeInfo {
   canonicalVolumeLink: string;
 }
 
+//Dados vindo da API
 export interface ImageLinks {
   smallThumbnail: string;
   thumbnail: string;
