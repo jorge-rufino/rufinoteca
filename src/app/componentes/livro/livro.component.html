@@ -2,14 +2,20 @@
   <img
     src="{{ livro.thumbnail != undefined ? livro.thumbnail : 'assets/imagens/capa-indisponivel.png'}}"
     alt="Capa do livro">
+
+<!-- "Pipes" permitem alterar os dados exibidos no template. Para utilizar-los, usamos a barra vertical "|" seguido do
+nome do pipe. Abaixo usamos o "slice" para limitar a quantidades de caracteres, ou seja, queremos do caractere na posição 0
+até a posição 30.
+Usamos tb o "date" informando como queremos que a data apareça -->
+
   <div class="info-card">
-    <p class="titulo">{{ livro.title }}</p>
+    <p class="titulo">{{ livro.title | slice: 0:30}}</p>
     <p class="informacoes">Autoria:</p>
     <p class="resultado">{{ livro.authors }}</p>
     <p class="informacoes">Data de publicação:</p>
-    <p class="resultado">{{ livro.publishedDate }}</p>
+    <p class="resultado">{{ livro.publishedDate | date:'dd/MM/yyyy' }}</p>
     <p class="informacoes">Editora:</p>
-    <p class="resultado">{{ livro.publisher }}</p>
+    <p class="resultado">{{ livro.publisher | slice: 0:20}}</p>
     <button (click)="onModalChange(true)">Mais detalhes</button>
   </div>
 </div>
