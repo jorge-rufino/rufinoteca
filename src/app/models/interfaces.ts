@@ -5,7 +5,7 @@ export interface Livro {
   publishedDate?: Date;
   description?: string;
   previewLink?: string;
-  thumbnail?: string;
+  thumbnail?: ImageLinks;
 }
 
 //Dados vindo da API
