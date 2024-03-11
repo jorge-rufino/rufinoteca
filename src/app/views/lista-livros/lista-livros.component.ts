@@ -1,8 +1,8 @@
 import { LivrosResultado, VolumeInfo, ImageLinks, Item } from './../../models/interfaces';
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { LivroVolumeInfo } from 'src/app/models/LivroVolumeInfo';
 import { Livro } from 'src/app/models/interfaces';
+import { LivroVolumeInfo } from 'src/app/models/livroVolumeInfo';
 import { LivroService } from 'src/app/service/livro.service';
 
 @Component({
