@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { Item } from './../../models/interfaces';
 import { Component } from '@angular/core';
-import { switchMap, map, filter, debounceTime, tap, distinctUntilChanged, bufferCount } from 'rxjs';
+import { switchMap, map, filter, debounceTime, tap, distinctUntilChanged, bufferCount, catchError, throwError } from 'rxjs';
 import { LivroVolumeInfo } from 'src/app/models/livroVolumeInfo';
 import { LivroService } from 'src/app/service/livro.service';
 
@@ -15,6 +15,7 @@ const PAUSA = 500; //Tempo dem milisegundos
 export class ListaLivrosComponent{
 
   campoBusca = new FormControl();
+  mensagemErro = '';
 
   constructor(private service: LivroService) { }
 
@@ -29,7 +30,11 @@ export class ListaLivrosComponent{
     distinctUntilChanged(),
     switchMap(valorDigitado => this.service.buscar(valorDigitado)),
     tap(respostaApi => console.log(respostaApi)),
-    map(items => this.livrosResultadoParaLivros(items))
+    map(items => this.livrosResultadoParaLivros(items)),
+    catchError(erro => {
+      console.log('Log de Error da Aplicação:',erro)
+      return throwError(() => new Error(this.mensagemErro = 'Ocorreu um erro inesperado! Recarregue a aplicação!'))
+    })
   )
 
   livrosResultadoParaLivros(items: Item[]): LivroVolumeInfo[]{

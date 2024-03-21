@@ -10,6 +10,11 @@
     </button>
   </div>
   <p>Busque por assunto, autoria, nome...</p>
+
+  <div class="resultados mensagem-erro" *ngIf="mensagemErro">
+    {{ mensagemErro }}
+  </div>
+
   <!-- O Pipe "async" faz o subscribe no Observable para ficar monitorando as alterações.
   Aqui criamos uma variavel local "listaLivros" e a excluimos do arquivo typescript-->
 <div class="container-card" *ngIf="livrosEncontrados$ | async as listaLivros, else telaInicial">
