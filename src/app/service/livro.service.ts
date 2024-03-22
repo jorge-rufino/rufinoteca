@@ -13,10 +13,10 @@ export class LivroService {
   constructor(private http: HttpClient) { }
 
   //Quanto fazemos requisicoes com o "get", podemos usar operadores para trabalhar os dados de retorno.
-  //O "pipe" é um operador que permite utilizar vários outros operadores em conjunto para trabalhar os dados
-  //O "tap" é um operador utilizado APENAS para visualizar/espionar os dados, não afeta em mais nada
+  //O "pipe" é um operador que permite utilizar vários outros operadores em conjunto para trabalhar os dados.
+  //O "tap" é um operador utilizado APENAS para visualizar/espionar os dados, não afeta em mais nada.
   //O "map" é um operador que transforma os dados, no caso, pegamos os dados da api e os converter em "LivrosResultado"
-  //e com o map pegamos apenas os "itens" e retornamos como resultado do método "buscar"
+  //e com o map pegamos apenas os "itens" e retornamos como resultado do método "buscar".
   buscar(valorDigitado: string): Observable<Item[]> {
     const params = new HttpParams().append('q', valorDigitado);
     return this.http.get<LivrosResultado>(this.API, { params }).pipe(
