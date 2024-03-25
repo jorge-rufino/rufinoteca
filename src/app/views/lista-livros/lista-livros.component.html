@@ -14,6 +14,11 @@
   <div class="resultados mensagem-erro" *ngIf="mensagemErro">
     {{ mensagemErro }}
   </div>
+  <div
+    class="resultados"
+    *ngIf="livrosEncontrados$ | async ">
+      {{ livrosResultado.totalItems}} resultados encontrados
+  </div>
 
   <!-- O Pipe "async" faz o subscribe no Observable para ficar monitorando as alterações.
   Aqui criamos uma variavel local "listaLivros" e a excluimos do arquivo typescript-->

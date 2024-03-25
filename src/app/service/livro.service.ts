@@ -17,12 +17,8 @@ export class LivroService {
   //O "tap" é um operador utilizado APENAS para visualizar/espionar os dados, não afeta em mais nada.
   //O "map" é um operador que transforma os dados, no caso, pegamos os dados da api e os converter em "LivrosResultado"
   //e com o map pegamos apenas os "itens" e retornamos como resultado do método "buscar".
-  buscar(valorDigitado: string): Observable<Item[]> {
-    const params = new HttpParams().append('q', valorDigitado);
-    return this.http.get<LivrosResultado>(this.API, { params }).pipe(
-      tap(respostaAPI => console.log('Fluxo do Tap',respostaAPI)),
-      map(respostaAPI => respostaAPI.items),
-      tap(resultado => console.log('Resultado do map:', resultado))
-    )
+  buscar(valorDigitado: string): Observable<LivrosResultado> {
+    const params = new HttpParams().append('q', valorDigitado )
+    return this.http.get<LivrosResultado>(this.API, { params })
   }
 }
